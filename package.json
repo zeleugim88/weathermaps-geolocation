@@ -1,0 +1,27 @@
+{
+  "name": "weathermaps-geolocation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeleugim88/weathermaps-geolocation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeleugim88/weathermaps-geolocation/issues"
+  },
+  "homepage": "https://github.com/zeleugim88/weathermaps-geolocation#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "colors": "^1.4.0",
+    "fetch": "^1.1.0",
+    "inquirer": "^8.2.2",
+    "request": "^2.88.2"
+  }
+}
