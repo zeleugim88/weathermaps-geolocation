@@ -71,28 +71,29 @@ const readInput = async( message ) => {
     return serieName;
 }
 
-const serieToDelete = async( tareas = [] ) => {
+const listPlaces = async( places = [] ) => {
 
-    const choices = tareas.map( (tarea, i) => {
+    const choices = places.map( (place, i) => {
 
         const idx = `${i + 1}.`.green;
 
         return {
-            value: tarea.id,
-            name:  `${ idx } ${ tarea.name }`
+            value: place.id,
+            name:  `${ idx } ${ place.name }`
         }
     });
 
+    //para que ponga la opcion 0 al principio
     choices.unshift({
         value: '0',
-        name: '0.'.green + ' Cancel serie deletion'
+        name: '0.'.green + ' Cancel'
     });
 
     const questions = [
         {
             type: 'list',
             name: 'id',
-            message: 'Delete this serie',
+            message: 'Select place',
             choices
         }
     ]
@@ -144,7 +145,7 @@ module.exports = {
     consoleMenu,
     pause,
     readInput,
-    serieToDelete,
+    listPlaces,
     confirm,
     showCheckList
 }

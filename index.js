@@ -1,11 +1,16 @@
-const { readInput, consoleMenu, pause } = require('./helpers/inquirer')
-const Busquedas = require('./models/busquedas')
+//confirugracion de las variables de entorno
+require('dotenv').config()
+
+const { readInput, consoleMenu, pause, listPlaces } = require('./helpers/inquirer')
+const Searches = require('./models/searches')
+
+//console.log(process.env.MAPBOX_KEY);
 const main = async () =>
 {
     /* const texto = await readInput('Hola :')
     console.log(texto) */
   
-    const busquedas = new Busquedas();
+    const searches = new Searches();
     let opt; 
 
     do {
@@ -14,19 +19,30 @@ const main = async () =>
         switch (opt) {
 
             case "1": //cómo se podría introducir número en vez de string con consoleMenu()
+                // Show message
                 const place = await readInput('Ciudad: ');
-                console.log(place);
+
+                //Search places
+                const places = await searches.city( place );
+
+                //Select place
+                const id = await listPlaces(places);
+                const selectedPlace = places.find( l => l.id === id);
+                
+                //Clima
+                const clima = await searches.placeClima( selectedPlace.lat, selectedPlace.lng )
                 //Mostrar mensaje:
                 //Buscar los lugares
                 //Seleccionar el lugar
                 //Datos del clima
                 //Mostrar resultados
                 console.log('\nCity Info\n'.green);
-                console.log('City:',);
-                console.log('Lat:',);
-                console.log('Lng:',);
-                console.log('Temperatura:',);
+                console.log('City:', selectedPlace.name);
+                console.log('Lat:', selectedPlace.lat);
+                console.log('Lng:', selectedPlace.lng);
+                console.log('Temperatura:', );
                 console.log('Minima:',);
+                console.log('Como esta el clima: ', clima)
                 break;
         }
         if ( opt != 0) await pause();
