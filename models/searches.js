@@ -15,12 +15,12 @@ class Searches {
         }
     }
 
-    get paramsWeather() {
+/*     get paramsWeather() {
         return {
             'appid' : process.env.OPENWEATHER_KEY,
             'units': "metric"
         }
-    }
+    } */
 
     //método asíncrono por ser http request
     async city(place = '') {
@@ -30,7 +30,6 @@ class Searches {
                 baseURL:`https://api.mapbox.com/geocoding/v5/mapbox.places/${ place }.json`,
                 params: this.paramsMapbox
             });
-            console.log("JITU:"+instance)
             //const resp = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/madrid.json?language=en&access_token=pk.eyJ1IjoiemVsZXVnaW0iLCJhIjoiY2wxYWY0YTdmMXd5MTNra2FoZ2J0b3N6cSJ9.se4MCVypizfTdLuzg3IIqg&limit=5');
             const resp = await instance.get();
             return resp.data.features.map( place => ({
@@ -48,7 +47,7 @@ class Searches {
         return []; // retornar los lugares
     }
 
-    async placeClima (lat,lng) {
+/*     async placeClima (lat,lng) {
         try {
              const instance = axios.create({
                 baseURL:`https://api.openweathermap.org/data/2.5/weather`,
@@ -68,7 +67,7 @@ class Searches {
         } catch (error) {
             console.log(error)
         }
-    }
+    } */
 }
 
 module.exports = Searches;

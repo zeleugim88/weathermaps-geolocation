@@ -4,11 +4,8 @@ require('dotenv').config()
 const { readInput, consoleMenu, pause, listPlaces } = require('./helpers/inquirer')
 const Searches = require('./models/searches')
 
-//console.log(process.env.MAPBOX_KEY);
 const main = async () =>
 {
-    /* const texto = await readInput('Hola :')
-    console.log(texto) */
   
     const searches = new Searches();
     let opt; 
@@ -28,9 +25,10 @@ const main = async () =>
                 //Select place
                 const id = await listPlaces(places);
                 const selectedPlace = places.find( l => l.id === id);
+                console.log(selectedPlace)
                 
                 //Clima
-                const clima = await searches.placeClima( selectedPlace.lat, selectedPlace.lng )
+                //const clima = await searches.placeClima( selectedPlace.lat, selectedPlace.lng )
                 //Mostrar mensaje:
                 //Buscar los lugares
                 //Seleccionar el lugar
@@ -42,7 +40,7 @@ const main = async () =>
                 console.log('Lng:', selectedPlace.lng);
                 console.log('Temperatura:', );
                 console.log('Minima:',);
-                console.log('Como esta el clima: ', clima)
+                //console.log('Como esta el clima: ', clima)
                 break;
         }
         if ( opt != 0) await pause();
